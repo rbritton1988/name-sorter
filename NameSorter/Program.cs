@@ -11,15 +11,12 @@ namespace NameSorter
                 throw new Exception("Missing Argument: the path to a file containing names is required.");
             }
 
-            string filePath = args[0];
+            string inputFilePath = args[0];
 
-            NameSorter nameSorter = new NameSorter(filePath);
-            
+            NameSorter nameSorter = new NameSorter(inputFilePath);            
             nameSorter.SortByLastName();
-
- 
-            
-            Console.WriteLine("Hello World!");
+            nameSorter.DisplayNames();
+            nameSorter.WriteNamesToFile(@"./sorted-names-list.txt");        
         }
     }
 }
