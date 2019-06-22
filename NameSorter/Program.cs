@@ -12,15 +12,14 @@ namespace NameSorter
             }
 
             string inputFilePath = args[0];
-            const string outputFilePath = "./sorted-names-list.txt";
+            const string outputFileName = "sorted-names-list";
 
             string[] names = TextFileReader.Read(inputFilePath);
 
             NameSorter nameSorter = new NameSorter();
-            nameSorter.SortByLastName(names);
+            names = nameSorter.SortByLastName(names);
             nameSorter.DisplayNames(names);
-            nameSorter.WriteNamesToFile(names, outputFilePath);
-        
+            nameSorter.WriteNamesToFile(names, outputFileName);
         }
     }
 }
