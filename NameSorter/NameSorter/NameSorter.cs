@@ -1,4 +1,5 @@
-﻿using NameSorter.Interface;
+﻿using System;
+using NameSorter.Interface;
 using NameSorter.Writer;
 
 namespace NameSorter
@@ -17,6 +18,11 @@ namespace NameSorter
         /// </summary>
         public string[] SortByLastName(string[] names)
         {
+            if(names.Length == 0)
+            {
+                throw new Exception("names must not be empty");
+            }
+
             names = ReverseValues(names);
             Sort(names);
             names = ReverseValues(names);
