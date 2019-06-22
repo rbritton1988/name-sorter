@@ -1,7 +1,7 @@
 ﻿using System;
 using NameSorter.Interface;
 
-namespace NameSorter
+namespace NameSorter.Writer
 {
     /// <summary>
     /// A simple helper class for writing multiple lines of text to the standard output.

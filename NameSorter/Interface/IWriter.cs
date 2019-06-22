@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace NameSorter.Interface
+﻿namespace NameSorter.Interface
 {
     interface IWriter
     {

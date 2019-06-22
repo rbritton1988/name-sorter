@@ -2,7 +2,7 @@
 using System;
 using NameSorter.Interface;
 
-namespace NameSorter
+namespace NameSorter.Writer
 {
     public class TextFileWriter : IWriter
     {
