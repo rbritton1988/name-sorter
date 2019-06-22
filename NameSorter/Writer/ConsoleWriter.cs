@@ -6,7 +6,7 @@ namespace NameSorter
     /// <summary>
     /// A simple helper class for writing multiple lines of text to the standard output.
     /// </summary>
-    class ConsoleWriter : IWriter
+    public class ConsoleWriter : IWriter
     {
         public void Write(string[] text)
         {

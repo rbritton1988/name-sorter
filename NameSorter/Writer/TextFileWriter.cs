@@ -1,9 +1,10 @@
 ﻿using System.IO;
+using System;
 using NameSorter.Interface;
 
 namespace NameSorter
 {
-    class TextFileWriter : IWriter
+    public class TextFileWriter : IWriter
     {
         private string _filePath;
 

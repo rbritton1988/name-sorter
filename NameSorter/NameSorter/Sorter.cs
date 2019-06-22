@@ -2,7 +2,7 @@
 
 namespace NameSorter
 {
-    class Sorter
+    public class Sorter
     {
         /// <summary>
         /// Reverses the order of words (seperated by a space) within each string stored in the given array.
