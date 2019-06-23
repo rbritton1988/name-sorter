@@ -13,19 +13,5 @@ namespace NameSorter.Writer.UnitTests
         {
             Assert.ThrowsException<Exception>(() => new TextFileWriter(""));
         }
-
-    }
-
-    [TestClass]
-    public class TextFileWriter_Static_GetLegalFileName
-    {
-        [TestMethod]
-        public void IllegalFileName_ReturnsLegalFileName()
-        {
-            string illegalFileName = ".<.";
-            string safeName = TextFileWriter.GetSafeFilename(illegalFileName);
-            string expected = "___";
-            Assert.AreEqual(expected, safeName);
-        }
     }
 }

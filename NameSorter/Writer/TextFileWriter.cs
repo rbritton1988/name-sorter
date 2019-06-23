@@ -9,11 +9,6 @@ namespace NameSorter.Writer
     /// </summary>
     public class TextFileWriter : IWriter
     {
-        public static string GetSafeFilename(string filename)
-        {
-            return "";
-        }
-
         private string _filePath;
 
         /// <summary>
@@ -27,7 +22,6 @@ namespace NameSorter.Writer
             {
                 throw new Exception("file name should not be empty");
             }
-
             // Get the cwd and form a path using the given fileName and appending .txt
             // Store the file path for future writing.
             string currentWorkingDir = Directory.GetCurrentDirectory();
