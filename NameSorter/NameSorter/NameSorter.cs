@@ -5,8 +5,8 @@ using NameSorter.Writer;
 namespace NameSorter
 {
     /// <summary>
-    /// Provides methods for sorting a list of names in alphabetical order by lastname.
-    /// Also provides additional methods for storing to file, and displaying names.
+    /// Provides a method for sorting a list of names in alphabetical order by lastname.
+    /// Provides additional methods for displaying names to the console and writing names to a file.
     /// </summary>
     public class NameSorter
     {
@@ -92,7 +92,7 @@ namespace NameSorter
         /// <param name="outputFileName">The name of the .txt file to write/overwrite.</param>
         public void WriteNamesToFile(string[] names, string outputFileName)
         {
-            // Substitute the _writer interface with a concrete FileWriter and invokes it's Write method.
+            // Substitute the _writer interface with a concrete TextFileWriter and invokes it's Write method.
             _writer = new TextFileWriter(outputFileName);
             _writer.Write(names);
         }
