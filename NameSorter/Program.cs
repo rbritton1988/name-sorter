@@ -6,7 +6,7 @@ namespace NameSorter
     {
         static void Main(string[] args)
         {
-            const string outputFileName = "sorted-names-list";
+            const string OutputFileName = "sorted-names-list";
 
             // Throw if no args are passed in.
             if (args.Length == 0)
@@ -21,7 +21,7 @@ namespace NameSorter
             NameSorter nameSorter = new NameSorter();
             names = nameSorter.SortByLastName(names);
             nameSorter.DisplayNames(names);
-            nameSorter.WriteNamesToFile(names, outputFileName);
+            nameSorter.WriteNamesToFile(names, OutputFileName);
         }
     }
 }

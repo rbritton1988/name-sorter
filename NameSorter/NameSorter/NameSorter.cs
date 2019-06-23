@@ -31,9 +31,7 @@ namespace NameSorter
             // Store each reversed fullname in the reversedNames array.
             for (int index = 0; index < namesCount; index++)
             {
-                string[] splitFullName = names[index].Split(' ');
-                Array.Reverse(splitFullName);
-                reversedNames[index] = string.Join(" ", splitFullName);
+                reversedNames[index] = ReverseNameOrder(names[index]);
             }
 
             // Return the populated array of reveresed names.
@@ -42,12 +40,15 @@ namespace NameSorter
 
 
         /// <summary>
-        /// Sort the given array of names in alphabetical order.
+        /// Reverse the order of a name (firstname -> lastname) becomes (lastname -> firstname).
         /// </summary>
-        /// <param name="names">The array of names to sort</param>
-        private void Sort(string[] names)
+        /// <param name="name">The name to reverse the order</param>
+        /// <returns></returns>
+        private string ReverseNameOrder(string name)
         {
-            Array.Sort(names);
+            string[] splitName = name.Split(' ');
+            Array.Reverse(splitName);
+            return string.Join(" ", splitName);
         }
 
 
@@ -66,7 +67,7 @@ namespace NameSorter
             // Switch the order of each name from (firstname -> lastname) to (lastname -> firstname).
             names = ReverseEachName(names);
             // Sort list of reversed names (which sorts by lastname due to names being reversed)
-            Sort(names);
+            Array.Sort(names);
             // Switch the order of each name from (lastname -> firstname) to (firstname -> lastname).
 
             return ReverseEachName(names);
