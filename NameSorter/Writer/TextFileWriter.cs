@@ -13,7 +13,6 @@ namespace NameSorter.Writer
 
         /// <summary>
         /// Accepts the name of the .txt file to write content to.
-        /// The file will be created at the CWD when the Write method is called.
         /// </summary>
         /// <param name="fileName">The name of the .txt file</param>
         public TextFileWriter(string fileName)
@@ -29,7 +28,7 @@ namespace NameSorter.Writer
         }
 
         /// <summary>
-        /// Write the given text to the .txt file.
+        /// Write the given text to the .txt file specified at construction.
         /// </summary>
         /// <param name="text">The text to write to the .txt file</param>
         public void Write(string[] text)
