@@ -5,7 +5,7 @@ using NameSorter.Interface;
 namespace NameSorter.Writer
 {
     /// <summary>
-    /// Writes/Overwrites text in a named .txt file within the CWD.
+    /// Provides a method for Writes/Overwriting text in a named .txt file within the CWD.
     /// </summary>
     public class TextFileWriter : IWriter
     {
