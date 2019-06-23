@@ -9,6 +9,11 @@ namespace NameSorter.Writer
     /// </summary>
     public class TextFileWriter : IWriter
     {
+        public static string GetSafeFilename(string filename)
+        {
+            return "";
+        }
+
         private string _filePath;
 
         /// <summary>
@@ -37,5 +42,6 @@ namespace NameSorter.Writer
         {
             File.WriteAllLines(_filePath, text);
         }
+
     }
 }
