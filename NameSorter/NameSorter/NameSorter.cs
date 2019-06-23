@@ -5,34 +5,79 @@ using NameSorter.Writer;
 namespace NameSorter
 {
     /// <summary>
-    /// Encapsulates a NamesFileManager object which is used to read/write to a given text file.
-    /// Providing an additional layer of abstraction to this class's interface.
+    /// Provides a method for sorting a list of names in alphabetical order by lastname.
+    /// Provides additional methods for displaying names to the console and writing names to a file.
     /// </summary>
-    public class NameSorter : Sorter
+    public class NameSorter
     {
+        // The writer switches between ConsoleWriter and TextFileWriter depending on which method is called.
         private IWriter _writer;
 
-
         /// <summary>
-        /// Sort a given list of names into alphabetical order by lastname given.
+        /// Reverse the order of each fullname within the given array of names.
         /// </summary>
-        public string[] SortByLastName(string[] names)
+        /// <param name="names">The array of names to reverse</param>
+        /// <returns>The given array of names with each name in reverse order</returns>
+        private string[] ReverseEachName(string[] names)
         {
-            if(names.Length == 0)
+            // Get the length of the array, so it isn't calculated on each pass of the for loop.
+            int namesCount = names.Length;
+
+            // Create an empty array of the same length as given value array.
+            string[] reversedNames = new string[namesCount];
+
+            // On each pass, split the fullname into single names
+            // Reverse the order of the names and join back into fullname, putting the space back.
+            // Store each reversed fullname in the reversedNames array.
+            for (int index = 0; index < namesCount; index++)
             {
-                throw new Exception("names must not be empty");
+                reversedNames[index] = ReverseNameOrder(names[index]);
             }
 
-            names = ReverseValues(names);
-            Sort(names);
-            names = ReverseValues(names);
-            return names;
+            // Return the populated array of reveresed names.
+            return reversedNames;
         }
 
 
         /// <summary>
-        /// Writes the content of the internal _names array to the standard output.
+        /// Reverse the order of a name (firstname -> lastname) becomes (lastname -> firstname).
         /// </summary>
+        /// <param name="name">The name to reverse the order</param>
+        /// <returns></returns>
+        private string ReverseNameOrder(string name)
+        {
+            string[] splitName = name.Split(' ');
+            Array.Reverse(splitName);
+            return string.Join(" ", splitName);
+        }
+
+
+        /// <summary>
+        /// Sort a given array of names in alphabetical order by lastname.
+        /// </summary>
+        /// <param name="names">The array of names to sort.</param>
+        /// <returns></returns>
+        public string[] SortByLastName(string[] names)
+        {
+            if(names.Length == 0)
+            {
+                throw new Exception("names should not be empty");
+            }
+
+            // Switch the order of each name from (firstname -> lastname) to (lastname -> firstname).
+            names = ReverseEachName(names);
+            // Sort list of reversed names (which sorts by lastname due to names being reversed)
+            Array.Sort(names);
+            // Switch the order of each name from (lastname -> firstname) to (firstname -> lastname).
+
+            return ReverseEachName(names);
+        }
+
+
+        /// <summary>
+        /// Writes the content of the given names array to the standard output.
+        /// </summary>
+        /// <param name="names">The names to display on console.</param>
         public void DisplayNames(string[] names)
         {
             // Substitute the _writer interface with a concrete ConsoleWriter and invokes it's Write method.
@@ -42,14 +87,14 @@ namespace NameSorter
 
 
         /// <summary>
-        /// Write/Overwrites the content of the internal _names array to a given file.
-        /// Creates the file if it doesn't exist.
+        /// Write/Overwrites the content of the given names array to a .txt file named with the given outputFileName.
+        /// The file is created/overwritten in the applications cwd.
         /// </summary>
-        /// <param name="outputFilePath">The path to the text file to write/overwrite.</param>
-        public void WriteNamesToFile(string[] names, string outputFilePath)
+        /// <param name="outputFileName">The name of the .txt file to write/overwrite.</param>
+        public void WriteNamesToFile(string[] names, string outputFileName)
         {
-            // Substitute the _writer interface with a concrete FileWriter and invokes it's Write method.
-            _writer = new TextFileWriter(outputFilePath);
+            // Substitute the _writer interface with a concrete TextFileWriter and invokes it's Write method.
+            _writer = new TextFileWriter(outputFileName);
             _writer.Write(names);
         }
     }
