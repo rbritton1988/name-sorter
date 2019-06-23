@@ -6,7 +6,20 @@ namespace NameSorter
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (args.Length == 0)
+            {  
+                throw new Exception("Missing Argument: the path to a file containing names is required.");
+            }
+
+            string inputFilePath = args[0];
+            const string outputFileName = "sorted-names-list";
+
+            string[] names = TextFileReader.Read(inputFilePath);
+
+            NameSorter nameSorter = new NameSorter();
+            names = nameSorter.SortByLastName(names);
+            nameSorter.DisplayNames(names);
+            nameSorter.WriteNamesToFile(names, outputFileName);
         }
     }
 }
