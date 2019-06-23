@@ -1,4 +1,5 @@
 ﻿using System;
+using NameSorter.Writer;
 
 namespace NameSorter
 {
@@ -18,10 +19,13 @@ namespace NameSorter
             string inputFilePath = args[0];
             string[] names = TextFileReader.Read(inputFilePath);
 
+            // Create an instance of the NameSorter and sort the names.
             NameSorter nameSorter = new NameSorter();
             names = nameSorter.SortByLastName(names);
-            nameSorter.DisplayNames(names);
-            nameSorter.WriteNamesToFile(names, OutputFileName);
+
+            // Display and Write the names.
+            NameWriter.WriteNamesToConsole(names);
+            NameWriter.WriteNamesToFile(names, OutputFileName);
         }
     }
 }
