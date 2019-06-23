@@ -5,5 +5,18 @@
 
 A dotnet core (2.1) console application written in C# that accepts a path to a .txt file as an argument.
 The argument file should contain a list of unsorted names.
-Theses names will then be sorted alphabetically in order of the lastnames. 
-The results are printed to the console and written to a sorted-names-list.txt in applications working directory.
+The application will then sort the names alphabetically in lastname order. 
+The results are printed to the console and written to a *sorted-names-list.txt* file in applications working directory.
+
+**To build both the main and tests projects run:**
+
+`dotnet build NameSorter.sln`
+
+**To run tests project run:**
+
+`dotnet build NameSorterTests`\
+`dotnet test NameSorterTests`
+
+**To publish a standalone executable Release on a Windows 10 machine**
+
+`dotnet publish NameSorter -c Release -r win10-x64`
