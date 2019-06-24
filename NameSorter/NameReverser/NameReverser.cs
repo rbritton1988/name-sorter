@@ -3,7 +3,7 @@
 namespace NameSorter
 {
     /// <summary>
-    /// A base class to inherit that provides methods for reversing names.
+    /// A class that provides methods for reversing names.
     /// </summary>
     public class NameReverser
     {
