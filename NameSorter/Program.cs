@@ -1,5 +1,5 @@
 ﻿using System;
-using NameSorter.Writer;
+using NameSorter;
 
 namespace NameSorter
 {
@@ -20,8 +20,8 @@ namespace NameSorter
             string[] names = TextFileReader.Read(inputFilePath);
 
             // Create an instance of the NameSorter and sort the names.
-            NameSorter nameSorter = new NameSorter();
-            names = nameSorter.SortByLastName(names);
+            LastNameSorter nameSorter = new LastNameSorter();
+            names = nameSorter.Sort(names);
 
             // Display and Write the names.
             NameWriter.WriteNamesToConsole(names);

@@ -5,20 +5,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace NameSorter.UnitTests.Sort
 {
     [TestClass]
-    public class NameSorter_Sort
+    public class LastNameSorter_Sort
     {
-        protected readonly NameSorter nameSorter;
+        protected readonly LastNameSorter nameSorter;
 
-        public NameSorter_Sort()
+        public LastNameSorter_Sort()
         {
-            nameSorter = new NameSorter();
+            nameSorter = new LastNameSorter();
         }
 
         [TestMethod]
         public void UnsortedNamesIn_SortedNamesReturned()
         {
             string[] names = { "John Doe", "Anne Other", "Anne", "Joseph Emanuel Isaac David"};
-            string[] sortedNames = nameSorter.SortByLastName(names);
+            string[] sortedNames = nameSorter.Sort(names);
             string[] expected = { "Anne", "Joseph Emanuel Isaac David", "John Doe", "Anne Other" };
             CollectionAssert.AreEqual(expected, sortedNames);
         }
@@ -27,7 +27,7 @@ namespace NameSorter.UnitTests.Sort
         public void OneNameIn_OneNameReturned()
         {
             string[] names = { "Robert Britton" };
-            string[] sortedNames = nameSorter.SortByLastName(names);
+            string[] sortedNames = nameSorter.Sort(names);
             string[] expected = { "Robert Britton"};
             CollectionAssert.AreEqual(expected, sortedNames);
         }
@@ -39,8 +39,7 @@ namespace NameSorter.UnitTests.Sort
             string[] names = { };
             // Make sure an Exception is thrown if the names list is empty
             // As there's little point to sorting nothing.
-            Assert.ThrowsException<Exception>(() => nameSorter.SortByLastName(names));
-
+            Assert.ThrowsException<Exception>(() => nameSorter.Sort(names));
         }
     }
 }
